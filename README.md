@@ -1,7 +1,7 @@
 dieBUGS
 =======
 
-LEZ kill and find bugs for our friend librarian
+Lez FIND and KILL bugs for our friend librarian and for librarian only.
 
 
 Remember PULL then PUSH
