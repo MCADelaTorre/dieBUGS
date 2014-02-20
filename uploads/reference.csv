@@ -1,0 +1,27 @@
+Reference Materials for testing,,,,,,,,,,,,,
+id,title,author,isbn,category,description,publisher,publication_year,access_type,course_code,total_available,total_stock,times_borrowed,for_deletion
+1,Computer Applications in Engineering Education,Magdy F. Iskander,,J,,"Wiley Periodicals, Inc., A Wiley Company",2014,F,,6,6,0,f
+2,Model-Driven and Software Product Line Engineering,Hugo Arboleda,9781848214279.00,B,,ISTE Ltd,2012,F,,3,5,0,f
+3,Computational Intelligence,Ali Ghorbani,,J,This leading international journal promotes and stimulates research in the field of artificial intelligence (AI).,"Wiley Periodicals, Inc.",2014,S,,4,5,0,f
+4,"Emerging Methods, Technologies, and Process Management in Software Engineering",Andrea De Lucia,9780470085714.00,B,,"John Wiley & Sons, Inc.",2008,S,,2,7,0,f
+5,Process Control Engineering,M. Polke,9783527286898.00,B,"This book surveys methods, problems, and tools used in process control engineering. Its scope has been purposely made broad in order to permit an overall view of this subject.",VCH Verlagsgesellschaft mbH,1994,F,,2,2,0,f
+6,The Handbook of Information and Computer Ethics,Kenneth Einar Himma,9780471799597.00,B,This handbook provides an accessible overview of the most important issues in information and computer ethics.,"John Wiley & Sons, Inc.",2008,F,,2,3,0,f
+7,Random Structures & Algorithms,Michal Karonski,,J,,"Wiley Periodicals, Inc., A Wiley Company",2014,S,,3,9,0,f
+8,Network Modeling and Simulation: A Practical Perspective,Mohsen Guizani,9780470035870.00,B,Network Modeling and Simulation is a practical guide to using modeling and simulation to solve real-life problems.,"John Wiley & Sons, Ltd",2010,F,,1,2,0,f
+9,Advanced Computer Architecture and Parallel Processing,Hesham El-Rewini,9780471467403.00,B,"Computer architecture deals with the physical configuration, logical structure, formats, protocols, and operational sequences for processing data, controlling the configuration, and controlling the operations over a computer.","John Wiley & Sons, Inc.",2005,F,,5,8,0,f
+10,Computer Animation and Virtual Worlds,Nadia Magnenat Thalmann,,J,,"John Wiley & Sons, Ltd.",,S,,2,6,0,f
+11,"3D Object Processing: Compression, Indexing and Watermarking",Jean-Luc Dugelay,9780470065426.00,B,,"John Wiley & Sons, Ltd",2008,F,,2,4,0,f
+12,Computer System Design: System-on-Chip,Michael J. Flynn,9780470643365.00,B,,"John Wiley & Sons, Inc.",2011,F,,3,3,0,f
+13,"Compiler Construction Using Java, JavaCC, and Yacc",Anthony J. Dos Reis,9780470949597.00,B,"Broad in scope, involving theory, the application of that theory, and programming technology, compiler construction is a moving target, with constant advances in compiler technology taking place.","the IEEE Computer Society, Inc.",2012,S,,1,2,0,f
+14,Concurrency and Computation: Practice and Experience,Geoffrey C. Fox,,J,,"John Wiley & Sons, Ltd.",2014,F,,1,1,0,f
+15,Mobile 3D Graphics SoC: From Algorithm to Chip,Jeong-Ho Woo,9780470823774.00,B,"The first book to explain the principals behind mobile 3D hardware implementation, helping readers understand advanced algorithms, produce low-cost, low-power SoCs, or become familiar with embedded systems",John Wiley & Sons (Asia) Pte Ltd,2010,F,,3,7,0,f
+16,Journal of Computer-Mediated Communication,S. Shyam Sundar,,J,,International Communication Association,2014,S,,4,6,0,f
+17,Journal of Software: Evolution and Process,Gerardo Canfora,,J,,"John Wiley & Sons, Ltd.",,F,,5,6,0,f
+18,Internet Technologies Handbook: Optimizing the IP Network,Mark A. Miller,9780471480501.00,B,"A comprehensive reference that addresses the need for solid understanding of the operation of IP networks, plus optimization and management techniques to keep those networks running at peak performance",Mark A. Miller. All rights reserved.,2004,F,,6,7,0,f
+19,International Journal of Network Management,James Won-Ki Hong,,J,,"John Wiley & Sons, Ltd.",,S,,3,3,0,f
+20,Fundamentals of Software Testing,Bernard Homès,9781848213241.00,B,,ISTE Ltd,2012,F,,2,5,0,f
+21,Designing a Better Authentication Model,Prashasti Gehalot,,T,,,2013,S,,1,1,0,f
+22,Coordinated Multi-Robot Security System Using Fuzzy Logic Decision Making,Ashish Tandel,,T,,,2013,S,,,,,
+23,XPENSTRAK: Expense Tracker Mobile Application for iPhone,Angad Manchanda,,T,,,2012,S,,,,,
+24,Report Generator & Server Database,Monica Maleyanda,,T,,,2012,S,,,,,
+25,Deadlock Detection and Recovery in Linux,Vinita Kondhalkar,,T,,,2011,S,,,,,
