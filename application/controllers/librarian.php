@@ -429,8 +429,18 @@ class Librarian extends CI_Controller{
 
 	/* ******************** END OF ADD REFERENCE MODULE ******************** */
 
+	/**
+	 * Displays information about the libarian
+	 *
+	 * @access public
+	*/
 	public function view_profile(){
-		
+		$data['title'] = "View Profile - Onlib";
+		$this->load->model('administrator_model');
+
+		$data['results'] = $this->administrator_model->get_profile($this->session->userdata('id'));
+
+		$this->load->view('user_profile_view', $data);
 	}
 
 	/* ******************** GENERATE REPORT MODULE ******************** */
@@ -454,6 +464,22 @@ class Librarian extends CI_Controller{
 			redirect('home');
 		}
 	}
+
+	/**
+	 * 
+	 *
+	 * @access public
+	*/
+	public function checkout_reference(){
+
+	}
+
+	/**
+	 * Display all references borrowed, reserved and waitlisted, and users who borrowed, reserved, and waitlisted such references
+	 *
+	 * @access public
+	*/
+	//public function trans
 
 	/* ******************** END OF GENERATE REPORT MODULE ******************** */
 

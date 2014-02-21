@@ -49,7 +49,7 @@
 	                <li class="active">
 		                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> name_of_librarian <b class="caret"></b></a>
 		                <ul class="dropdown-menu">
-		                    <li><a href="#">View Profile</a></li>
+		                    <li><a href="<?php echo base_url('index.php/librarian/view_profile'); ?>">View Profile</a></li>
 		                    <li><a href="#">View Student/Faculty</a></li>
 		                    <li><a href="<?=base_url().'index.php/librarian/search_reference_index'?>">Search References</a></li>
 		                    <li class="dropdown-submenu">

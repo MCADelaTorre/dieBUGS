@@ -70,7 +70,7 @@
               <li class="active">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?=$this->session->userdata('username')?> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">View Profile</a></li>
+                  <li><a href="<?= base_url('index.php/librarian/view_profile') ?>">View Profile</a></li>
                    <li><a href="<?=base_url().'index.php/librarian/search_reference_index'?>">Search References</a></li>
                    <li class="dropdown-submenu">
                     <a tabindex="-1" href="#">Add Reference</a>
