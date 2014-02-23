@@ -16,12 +16,12 @@
                 </tr>
                <tr>
                         <td align="right"><button type="button" class="btn btn-primary">ISBN</button></td>
-                        <td align="right"> <input name="isbn" class="form-control"type="text" id="inputISBN" > </td>
+                        <td align="right"> <input name="isbn" class="form-control" type="text" id="inputISBN" > </td>
                 </tr>
                 <tr>
                         <td align="right"><button type="button" class="btn btn-primary">Category</button></td>
                         <td align="right"> <select class="form-control"name="category" id="inputCategory" required>
-                            <option value="B" selected>Book</option>
+                            <option value="B">Book</option>
                             <option value="M">Magazine</option>
                             <option value="T">Thesis</option>
                              <option value="S">Special Problem</option>

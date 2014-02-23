@@ -1,3 +1,4 @@
 Design complaint:
  > Home Page-> Scroll bar misplaced
  > Login -> form not in the middle
+ > Add a favicon
