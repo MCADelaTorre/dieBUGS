@@ -16,7 +16,7 @@
                 </tr>
                <tr>
                         <td align="right"><button type="button" class="btn btn-primary">ISBN</button></td>
-                        <td align="right"> <input name="isbn" class="form-control" type="text" id="inputISBN" > </td>
+                        <td align="right"> <input name="isbn" class="form-control" type="text" id="inputISBN" placeholder="XXXXXXXXXX"> </td>
                 </tr>
                 <tr>
                         <td align="right"><button type="button" class="btn btn-primary">Category</button></td>
@@ -24,9 +24,9 @@
                             <option value="B">Book</option>
                             <option value="M">Magazine</option>
                             <option value="T">Thesis</option>
-                             <option value="S">Special Problem</option>
-                        <option value="C">CD/DVD</option>
-                        <option value="J">Journal</option>
+                            <option value="S">Special Problem</option>
+                            <option value="C">CD/DVD</option>
+                            <option value="J">Journal</option>
                 </select>  </td>
                 </tr>
                <tr>
@@ -44,7 +44,12 @@
                 </tr>
                 <tr>
                         <td align="right"><button type="button" class="btn btn-primary">Access Type</button></td>
-                        <td align="right"> <input name="access_type" class="form-control"type="text" id="inputAccess" > </td>
+                        <td align="right"> 
+                            <select class="form-control" name="access_type" class="form-control" id="inputAccess" required>
+                                <option value="S">Student</option>
+                                <option value="F">Faculty</option>
+                            </select>
+                        </td>
                 </tr>
                <tr>
                         <td align="right"><button type="button" class="btn btn-primary">Course Code</button></td>
@@ -52,7 +57,7 @@
                 </tr>
                  <tr>
                         <td align="right"><button type="button" class="btn btn-primary">Total Stock</button></td>
-                        <td align="right"> <input name="total_stock" class="form-control"type="text" id="inputTotalSt" min="1" required > </td>
+                        <td align="right"> <input name="total_stock" class="form-control"type="number" min="0" id="inputTotalSt" min="1" required > </td>
                 </tr>
                 
             </table>
