@@ -1,2 +1,2 @@
 Design complaint:
- > 
+ > Home Page-> Scroll bar misplaced
