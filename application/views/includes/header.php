@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="<?php echo base_url();?>'css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css');?>">
         <style>
             body {
                 padding-top: 50px;
@@ -19,13 +19,13 @@
         </style>
   
         <link rel="stylesheet" type='text/css' href="<?php echo base_url('css/bootstrap-theme.min.css');?>">
-        <link rel="stylesheet" type='text/css'href="<?php echo base_url('css/bootstrap.css');?>">
+        <link rel="stylesheet" type='text/css' href="<?php echo base_url('css/bootstrap.css');?>">
        
-       <link rel="stylesheet" type='text/css'href="<?php echo base_url('css/main.css');?>">
-       <link rel="stylesheet" type='text/css'href="<?php echo base_url('css/main_login.css');?>">
-        <link rel="stylesheet" type='text/css'href="<?php echo base_url('css/template.css');?>">
-        <link rel="stylesheet" type='text/css'href="<?php echo base_url('css/profile_view.css');?>">
-        <script src="<?base_url().'js/vendor/modernizr-2.6.2-respond-1.1.0.min.js'?>"></script>
+       <link rel="stylesheet" type='text/css' href="<?php echo base_url('css/main.css');?>">
+       <link rel="stylesheet" type='text/css' href="<?php echo base_url('css/main_login.css');?>">
+        <link rel="stylesheet" type='text/css' href="<?php echo base_url('css/template.css');?>">
+        <link rel="stylesheet" type='text/css' href="<?php echo base_url('css/profile_view.css');?>">
+        <script src="<?php echo base_url('js/vendor/modernizr-2.6.2-respond-1.1.0.min.js'); ?>"></script>
        
     </head>
     <body>
@@ -52,7 +52,7 @@
               <li class="active">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?=$this->session->userdata('username')?> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<?=base_url().'index.php/borrower/view_borrower_profile_index'?>">View Profile</a></li>
+                  <li><a href="<?=base_url('index.php/borrower/view_borrower_profile_index') ?>">View Profile</a></li>
                   <li><?=anchor('administrator/search_accounts', 'Search Accounts')?></li>
                   <li><?=anchor('administrator/create_account', 'Add Account')?></li>
                   <li><?=anchor('logout', 'Logout')?></li>
@@ -72,8 +72,8 @@
               <li class="active">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?=$this->session->userdata('username')?> <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">View Profile</a></li>
-                   <li><a href="<?=base_url().'index.php/librarian/search_reference_index'?>">Search References</a></li>
+                  <li><a href="<?= base_url('index.php/librarian/view_profile') ?>" >View Profile</a></li>
+                   <li><a href="<?=base_url('index.php/librarian/search_reference_index') ?>">Search References</a></li>
                    <li class="dropdown-submenu">
                     <a tabindex="-1" href="#">Add Reference</a>
                         <ul class="dropdown-menu">
@@ -81,8 +81,8 @@
                              <li><a href="<?= site_url('librarian/file_upload') ?>">File Upload</a></li>
                         </ul>
                     </li>
-                  <li><a href="<?=base_url().'index.php/librarian/view_report_index'?>">Generate Report</a></li>
-                  <li><a href="<?=base_url().'index.php/logout'?>">Logout</a></li>
+                  <li><a href="<?=base_url('index.php/librarian/view_report_index') ?>">Generate Report</a></li>
+                  <li><a href="<?=base_url('index.php/logout') ?>">Logout</a></li>
                 </ul>
               </li>
             </ul>
@@ -98,10 +98,10 @@
               <li class="active">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=$this->session->userdata('username')?><b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<?=base_url().'index.php/profile'?>">View Profile</a></li>
-                  <li><a href="<?=base_url().'index.php/search'?>">Search References</a></li>
-                  <li><a href="<?=base_url().'index.php/cart_controller/view_cart'?>">View Cart</a></li>
-                  <li><a href="<?=base_url().'index.php/logout'?>">Logout</a></li>
+                  <li><a href="<?= base_url('index.php/profile') ?>">View Profile</a></li>
+                  <li><a href="<?= base_url('index.php/search') ?>">Search References</a></li>
+                  <li><a href="<?= base_url('index.php/cart_controller/view_cart') ?>">View Cart</a></li>
+                  <li><a href="<?= base_url('index.php/logout') ?>">Logout</a></li>
                 </ul>
               </li>
             </ul>

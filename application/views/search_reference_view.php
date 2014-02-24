@@ -12,6 +12,7 @@
          <div class="col-sm-offset-1" id="search_top">
 
     <form action = "<?= base_url() . 'index.php/librarian/display_search_results' ?>" method = 'GET'>
+
       <select  class="dropdown"name = 'selectCategory'>
        <option value = 'title' <?php echo ($this->input->get('selectCategory') == 'title') ? "selected" : ""; ?>>Title</option>
        <option value = 'author' <?php echo ($this->input->get('selectCategory') == 'author') ? "selected" : ""; ?>>Author</option>
@@ -24,6 +25,8 @@
   
       <input type = 'submit' class="btn btn-primary" name = 'submit' value = 'Submit' />
       <a href="#advanceSearch"data-toggle="modal"> <input type="submit" name="aSearch" class="btn btn-primary"  value="Advanced Search"/></a>
+      <br />
+      <input type = 'submit' class="btn btn-primary" name = 'getAll' value = 'Display All References' />
   </div>
   		
 

@@ -59,14 +59,14 @@ class Librarian extends CI_Controller{
 		$data['title'] = 'Librarian Search Reference - ICS Library System';
 
 		$query_array = array(
-			'category' => $this->input->get('selectCategory'),
+			'category' => htmlspecialchars($this->input->get('selectCategory')),
 			'text' => htmlspecialchars($this->input->get('inputText')),
-			'sortCategory' => $this->input->get('selectSortCategory'),
-			'row' => $this->input->get('selectRows'),
-			'accessType' => $this->input->get('selectAccessType'),
-			'orderBy' => $this->input->get('selectOrderBy'),
-			'deletion' => $this->input->get('checkDeletion'),
-			'match' => $this->input->get('radioMatch')
+			'sortCategory' => htmlspecialchars($this->input->get('selectSortCategory')),
+			'row' => htmlspecialchars($this->input->get('selectRows')),
+			'accessType' => htmlspecialchars($this->input->get('selectAccessType')),
+			'orderBy' => htmlspecialchars($this->input->get('selectOrderBy')),
+			'deletion' => htmlspecialchars($this->input->get('checkDeletion')),
+			'match' => htmlspecialchars($this->input->get('radioMatch'))
 		);
 
 		//Do not continue if user tried to make the database retrieval fail by editing URL's GET 
