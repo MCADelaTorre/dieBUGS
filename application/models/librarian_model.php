@@ -1,4 +1,5 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 /**
  * Model for Librarian-specific modules
  *
@@ -15,6 +16,23 @@ class Librarian_model extends CI_Model{
 	function __construct(){
 		parent::__construct();
 	}
+
+	/**
+	 *
+	*/
+	public function get_all_references(){
+		return $this->db->get('reference_materials');
+	}
+
+	/**
+	 * Retrieves ALL references starting within offset ending with per_page
+	 *
+	 * @access 	public
+	 * @return 	
+	*/
+	public function get_all_references_part($offset, $per_page){
+		return $this->db->get('reference_materials', $per_page, $offset);
+	}//end of function get_all_references
 
 	/**
 	 * Returns the number of rows affected by the user's search input
@@ -135,7 +153,7 @@ class Librarian_model extends CI_Model{
 		$query = $this->db->query($sql);
 		return $query;
 		
-	}//end of functionget_ready_for_deletion
+	}//end of function get_ready_for_deletion
 	
 	//get the remaining books
 	function get_other_books($idready){
@@ -287,10 +305,9 @@ class Librarian_model extends CI_Model{
 			$ceilingValue = $data->total_stock;
 		}
 
-		if($flag === 'C' && $newValue > 0){
-			$newValue--;
+		if($flag === 'C' && $newValue > 0)
 			$updateStatus = TRUE;
-		}
+
 		elseif ($flag === 'R' && $newValue < $ceilingValue){
 			$newValue++;
 			$updateStatus = TRUE;
@@ -298,7 +315,7 @@ class Librarian_model extends CI_Model{
 		
 		if($updateStatus === TRUE){
 			$this->db->query("UPDATE reference_materials SET total_in_stock = '{$newValue}' WHERE id = '{$referenceId}'");
-			$this->db->query("UPDATE transactions SET date_borrowed = date('Y-m-d'), borrow_due_date = ");
+			//$this->db->query("UPDATE transactions SET date_borrowed = date('Y-m-d'), borrow_due_date = ");
 		}
 	}
 

@@ -26,6 +26,7 @@
       <input type = 'submit' class="btn btn-primary" name = 'submit' value = 'Submit' />
       <a href="#advanceSearch"data-toggle="modal"> <input type="submit" name="aSearch" class="btn btn-primary"  value="Advanced Search"/></a>
       <br />
+      <input type = 'hidden' name = 'all' value = 'FALSE' />
       <input type = 'submit' class="btn btn-primary" name = 'getAll' value = 'Display All References' />
   </div>
   		
@@ -97,10 +98,6 @@
 
     </form>
     <!-- End of Form for Searching Reference -->
-
-    <!-- Display table for references already for deletion (complete stock) -->
-
-    <!-- END -->
  
 		<!-- Display table for references not ready or not scheduled for deletion -->
 		<table id = 'booktable' border = '1'></table>
@@ -181,7 +178,7 @@
 				<div id="paginationStyle"><?= $this->pagination->create_links() ?></div>
 			
 			
-				<?= 'Number of rows retrieved: ' . $total_rows ?>
+				<?= 'Number of rows retrieved: ' . $numResults ?>
 				
 			</form>
 		<?php } ?>
