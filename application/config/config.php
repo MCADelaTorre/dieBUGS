@@ -17,7 +17,7 @@
 /*
 $config['base_url']	= "http://".$_SERVER['SERVER_NAME']."/icsls/";*/
 
-$config['base_url']	= 'http://localhost/dieBUGS/';
+$config['base_url']	= 'http://localhost/icsls/';
 
 /*
 |--------------------------------------------------------------------------

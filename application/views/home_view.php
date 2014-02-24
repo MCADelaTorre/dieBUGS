@@ -1,190 +1,70 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title></title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width">
+<?=$this->load->view("includes/header")?>
+<div id="advanceSearch" class="modal fade in" role="dialog">  
+<div class="modal-dialog">  
+          <div class="modal-content">
+            <div class="modal-header">  
+              <a class="close" data-dismiss="modal">&times;</a>
+            <h4>Advanced Search</h4>  
+            </div><!--modal header-->
+            <div class="modal-body">
+                <form action="<?php echo base_url('index.php/search/advanced_search_reference'); ?>" method="get" accept-charset="utf-8">
+        <table>
+          <tr>
+            <td align="right"><button class="btn btn-primary"><input value="title" type="checkbox" name="projection[]" checked="true">Title:</button></td>
+            <td align="right"><input type="text" class="form-control" name="title" size = "30" value="<?php if(isset($temparray) && in_array('title',$temparray)) echo $temparrayvalues[array_search('title', $temparray)]?>"><br/></td></tr>
+          <tr>
+          	<td align="right"><button class="btn btn-primary"><input value="author" type="checkbox" name="projection[]">Author:</button></td>
+          	<td align="right"><input type="text" name="author" size = "30" class="form-control"value="<?php if(isset($temparray) && in_array('author',$temparray)) echo $temparrayvalues[array_search('author', $temparray)]?>"><br/></td></tr>
+          <tr>
+          	<td align="right"><button class="btn btn-primary"><input value="year_published" type="checkbox" name="projection[]">Year Published:</button></td>
+          	<td align="right"><input type="text" name="year_published" class="form-control"size = "30" value="<?php if(isset($temparray) && in_array('year_published',$temparray)) echo $temparrayvalues[array_search('year_published', $temparray)]?>"><br/></td></tr>
+          <tr>
+          	  <td align="right"><button class="btn btn-primary"><input value="publisher" type="checkbox" name="projection[]">Publisher:</button></td>
+          	<td align="right"><input type="text" name="publisher" class="form-control"size = "30" value="<?php if(isset($temparray) && in_array('publisher',$temparray)) echo $temparrayvalues[array_search('publisher', $temparray)]?>"><br/></td></tr>
+          <tr>
+          	  <td align="right"><button class="btn btn-primary"><input value="course_code" type="checkbox" name="projection[]" >Subject:</button></td>
+          
+          	<td><input type="text" name="course_code"class="form-control" size = "30" value="<?php if(isset($temparray) && in_array('course_code',$temparray)) echo $temparrayvalues[array_search('course_code', $temparray)]?>"><br/></td></tr>    <tr>
+          <tr>
+          	  <td align="right"><button class="btn btn-primary">Category:</button></td>
+            <td align="right">
+              <select class="form-control" >
+                <option value="B">Book</option>
+                <option value="J">Journal</option>
+                <option value="T">Thesis</option>
+                <option value="D">CD</option>
+                <option value="C">Catalog</option>
+              </select><br/>
+            </td>
+          </tr>
+            <tr>
+            <td align="left"><input type="radio" name="sort" value="sortalpha"checked="true" />Sort from A to Z</td>
+            <td align="left"><input type="radio" name="sort" value="sortbeta" />Sort from Z to A</td>
+          </tr> 
+          <tr>
+            <td align="left"><input type="radio" name="sort" value="sortyear" />Sort by year</td>
+            <td align="left"><input type="radio" name="sort" value="sortauthor" />Sort by author(A-Z)</td>
+          </tr> 
+        </table>
+        
+       
 
-		<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>">
-		<style>
-			body {
-				padding-top: 50px;
-				padding-bottom: 20px;
-			}
-		</style>
-		<link rel="stylesheet" href="<?php echo base_url('css/bootstrap-theme.min.css'); ?>">
-		<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.css'); ?>">
-		<link rel="stylesheet" href="<?php echo base_url('css/main.css'); ?>">
-		<link rel="stylesheet" href="<?php echo base_url('css/template.css'); ?>">
-
-		<script src="<?php echo base_url('js/vendor/modernizr-2.6.2-respond-1.1.0.min.js') ?>"></script>
-
-	</head>
-	<body>
-		<!--[if lt IE 7]>
-			<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experiensce.</p>
-		<![endif]-->
-	<div class="navbar-fixed-top" id="test2">
-		<div class="container">
-			<div class="navbar-header" id="nav-bar">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">
-					<img src="<?php echo base_url('logo.png'); ?>" width="150" height="45" id="logo">
-				</a>
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-        <?php if($this->session->userdata('userType') == 'L') { ?>
-        <div id="nav-in">
-            <div class="navbar-collapse collapse">
-	            <ul class="nav nav-pills">
-	                <li class="active">
-		                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> name_of_librarian <b class="caret"></b></a>
-		                <ul class="dropdown-menu">
-		                    <li><a href="<?php echo base_url('index.php/librarian/view_profile'); ?>">View Profile</a></li>
-		                    <li><a href="#">View Student/Faculty</a></li>
-		                    <li><a href="<?=base_url().'index.php/librarian/search_reference_index'?>">Search References</a></li>
-		                    <li class="dropdown-submenu">
-		                    <a tabindex="-1" href="<?= site_url('librarian/add_reference') ?>">Add Reference</a>
-		                        <ul class="dropdown-menu">
-		                            <li> <a href="<?= site_url('librarian/add_reference') ?>">Add Reference</a></li>
-		                            <li><a href="<?= site_url('librarian/file_upload') ?>">File Upload</a></li>
-		                        </ul>
-		                    </li>
-		                  	<li><a href="<?=base_url().'index.php/librarian/add_reference_index'?>">Add Reference</a></li>
-		                  	<li><a href="<?=base_url().'index.php/librarian/view_report_index'?>">Generate Report</a></li>
-		                  	<li><a href="<?=base_url().'index.php/logout'?>">Logout</a></li>
-		                </ul>
-	                </li>
-	            </ul>
-            </div>     
+              <div class="modal-footer">
+                <input  class="btn btn-primary"type="submit" value="Advanced Search" />
+                 </form> 
+              </div> <!-- modal footer -->
+            </div>
+          </div>
         </div>
-        <?php }else if($this->session->userdata('userType') == 'S' || $this->session->userdata('userType') == 'F') { ?>
-        <div id="nav-in">
-            <div class="navbar-collapse collapse">
-	            <ul class="nav nav-pills">
-	              <li class="active">
-	                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?=$this->session->userdata('username')?><b class="caret"></b></a>
-	                <ul class="dropdown-menu">
-	                  <li><a href="<?=base_url().'index.php/borrower/view_borrower_profile_index'?>">View Profile</a></li>
-	                  <li><a href="#">Search References</a></li>
-	                  <li><a href="#">View Cart</a></li>
-	                  <li><a href="<?=base_url().'index.php/logout'?>">Logout</a></li>
-	                </ul>
-	              </li>
-	            </ul>
-            </div>     
-        </div>
-        <?php }else{ ?>
-		 	<div id="nav-in">
-					<form class="navbar-form navbar-left nav-in-search" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search">
-						</div>
-						<button type="submit" class="btn btn-default">Search</button>
-						<a href="#advanceSearch1"data-toggle="modal">
-							<input type="submit" name="aSearch" class="btn btn-primary" value="Advanced Search"/>
-						</a>
-					</form>
-					<div id="advanceSearch1" class="modal fade in" role="dialog">  
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">  
-									<a class="close" data-dismiss="modal">&times;</a>
-									<h4>Advanced Search</h4>  
-								</div>
-								<div class="modal-body">
-									<form name="aSearch" method='post' class = 'form-horizontal' style = 'margin-bottom: 0px;'>
-										<div class="row">
-											<div class="col-lg-10">
-												<div class="input-group">
-													<div class="input-group-btn">
-														<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Category<span class="caret"></span></button>
-														<ul class="dropdown-menu">
-															<li><a href="#">Course Code</a></li>
-															<li><a href="#">Title</a></li>
-															<li><a href="#">Author</a></li>
-															<li><a href="#">Publisher</a></li>
-														</ul>
-													</div><!-- /btn-group -->
-													<input type="text" class="form-control">
-												</div><!-- /input-group -->
-											</div><!-- /.col-lg-10 -->
-											<br/><br/>
-											<div class="col-lg-10">
-												<div class="input-group">
-													<div class="input-group-btn">
-														<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Category<span class="caret"></span></button>
-														<ul class="dropdown-menu">
-															<li><a href="#">Course Code</a></li>
-															<li><a href="#">Title</a></li>
-															<li><a href="#">Author</a></li>
-															<li><a href="#">Publisher</a></li>
-														</ul>
-													</div><!-- /btn-group -->
-													<input type="text" class="form-control">
-												</div><!-- /input-group -->
-											</div><!-- /.col-lg-10 -->
-											<br/><br/>
-											<div class="col-lg-10">
-												<div class="input-group">
-													<div class="input-group-btn">
-														<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Category<span class="caret"></span></button>
-														<ul class="dropdown-menu">
-															<li><a href="#">Course Code</a></li>
-															<li><a href="#">Title</a></li>
-															<li><a href="#">Author</a></li>
-															<li><a href="#">Publisher</a></li>
-														</ul>
-													</div><!-- /btn-group -->
-													<input type="text" class="form-control">
-												</div><!-- /input-group -->
-											</div><!-- /.col-lg-10 -->
-											<br/><br/>
-											<div class="col-lg-10">
-												<div class="input-group">
-													<span class="input-group-addon">Exact Match</span>
-													<input type="text" class="form-control">
-												</div>  
-											</div>
-											<br/></br/>
-											<div class="col-lg-10">
-												<div class="input-group">
-													<span class="input-group-addon">Search Expression</span>
-													<input type="text" class="form-control">
-												</div>  
-											</div>
-										</div>
-									</form>
-									<div class="modal-footer">
-										<button class="btn btn-primary" name="search">Search</button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-        <?php } ?>
-			</div>
-		</div>
-	</div><!--navbar-fixed-top-->
-	
+    </div> 
 	<div id="content">
-		<div id="left">
-			<div id="carou">
+		<div id="left1">
+			<div id="carou1">
 			<!--  Carousel -->
 			<!--  consult Bootstrap docs at 
             http://twitter.github.com/bootstrap/javascript.html#carousel -->
 				<div id="this-carousel-id" class="carousel slide">
-					<div class="carousel-inner" id="img-car">
+					<div class="carousel-inner" id="img-car1">
 						<div class = "item active">;
 							<a href = ""><img src = "<?php echo base_url('img/5.jpg'); ?>" alt="Image 1" /></a>;
 							<div class = "carousel-caption">
@@ -210,29 +90,29 @@
 			</div>
 			<!-- end carousel -->
 	
-			<div class="link-gr">
-				<a href="" target="_blank" class="link-pic" id="uplb">
+			<div class="link-gr1">
+				<a href="" target="_blank" class="link-pic" id="uplb1">
 					<div class="title-link">UPLB</div>
 				</a>
-				<a href="" target="_blank" class="link-pic" id="ics">
+				<a href="" target="_blank" class="link-pic" id="ics1">
 					<div class="title-link">ICS</div>
 				</a>
-				<a href="" target="_blank" class="link-pic" id="add">
+				<a href="" target="_blank" class="link-pic" id="add1">
 					<div class="title-link">Mordor</div>
 				</a>
 			</div>
 		</div>
 	
-		<div id="right">
+		<div id="right1">
 			<div class="container" id="signin">
 				<form action="<?=base_url().'index.php/login'?>" class="form-signin" role="form" method='post'>
-					<input type="text" name='username' class="form-control" placeholder="Username">
-					<input type="password" name='password' class="form-control" placeholder="Password">
+					<input type="text" name='username' class="form-control" placeholder="Username" required>
+					<input type="password" name='password' class="form-control" placeholder="Password" required>
 					<br>
 					<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-					<button class="btn btn-sm btn-success btn-block" href="#createAccount" data-toggle="modal" data-target=".bs-modal-lg">Create Account</button>
+				
 				</form>
-
+				<button class="btn btn-sm btn-success btn-block" href="#createAccount" data-toggle="modal" data-target=".bs-modal-lg">Create Account</button>
 	<!-- Create Account Modal -->
 	<div class="modal fade bs-modal-lg" tabindex="-1" id="createAccount" tabindex="-1" role="dialog" aria-labelledby="createAccountLabel" aria-hidden="true">
 	    <div class="modal-dialog modal-lg"> 
@@ -248,15 +128,15 @@
 	          		<div class="row">
 	          			<div class="form-inline">
 							<div class="form-group">
-								<input type="text" class="form-control" id="first_name" name = "first_name" pattern = "([A-Za-z]{2,32}\s*)+" placeholder="First Name" required>
+								<input type="text" class="form-control" id="first_name" name = "first_name" pattern = "[A-Za-z]+" placeholder="First Name" required>
 							</div>
 							<div class="form-group">
 								<div class="col-xs-offset-6">
-									<input type="text" class="form-control" id="middle_name" name = "middle_name" placeholder="Middle Name"　pattern = "[A-Za-z]{1,32}" required>
+									<input type="text" class="form-control" id="middle_name" name = "middle_name" placeholder="Middle Name" required>
 								</div>
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="last_name" name = "last_name" pattern = "[A-Za-z\s]+" placeholder="Last Name" required> 
+								<input type="text" class="form-control" id="last_name" name = "last_name" pattern = "[A-Za-z]+" placeholder="Last Name" required> 
 							</div>
 						</div>
 					</div><br/>
@@ -278,7 +158,7 @@
 						</tr>
 						<tr>
 							<td align="right" class="col-md-4"><label> Contact Number</label> </td>
-							<td><input type="text" class="form-control" id="contact" name = "contact_number" pattern = "09[0-9]{9}" placeholder="09XXXXXXXXX" required></td>
+							<td><input type="text" class="form-control" id="contact" name = "contact_number" pattern = "[0-9]{11}" placeholder="09XXXXXXXXX" required></td>
 						</tr>
 						<tr>
 							<td align="right" class="col-md-4"><label> E-mail Address</label> </td>
@@ -292,6 +172,8 @@
 							<td align="right" class="col-md-4"></br>
 								<select name="user_type" class="form-control typeDropdown">
 									<option value="">Select User Type</option>
+									<option value="A"> Administrator </option>
+									<option value="L"> Librarian </option>
 									<option value="S"> Student </option>
 									<option value="F"> Faculty </option>
 								</select> 
@@ -301,7 +183,7 @@
 						</tr>
 						<tr id="student_number">
 							<td align="right" class="col-md-4"><label> Student No.</label> </td>
-							<td><input type="text" class="form-control"  id="student_number" name="student_number" pattern = "^[0-9]{4}-[0-9]{5}$"/></br></td>
+							<td><input type="text" class="form-control"  id="student_number" name="student_number" pattern = "^[0-9]{4}[-]{1}[0-9]{5}$"/></br></td>
 						</tr>
 						<tr id="employee_number">
 							<td align="right" class="col-md-4"><label> Employee No.</label> </td>
@@ -312,16 +194,16 @@
 							<td>
 								<select name="college" class="form-control collegeDropdown">
 									<option value="">Select College</option>
-									<option value="CA"> College of Agriculture (CA) </option>
-									<option value="CAS"> College of Arts and Sciences (CAS) </option>
-									<option value="CA-CAS"> College of Agriculture - College of Arts and Sciences (CA - CAS)</option>
-									<option value="CDC"> College of Development Communication (CDC) </option>
-									<option value="CEM"> College of Economics and Management </option>
-									<option value="CEAT"> College of Engineering and Agro-Industrial Technology (CEAT) </option>
-									<option value="CFNR"> College of Forestry and Natural Resources (CFNR) </option>
-									<option value="CHE"> College of Human Ecology (CHE) </option>
-									<option value="CVM"> College of Veterinary Medicine (CVM) </option>
-									<option value="GS"> Graduate School (GS) </option>
+									<option value="CA"> Cgriculture </option>
+									<option value="CAS"> CAS </option>
+									<option value="CA-CAS"> CA - CAS</option>
+									<option value="CDC"> CDC </option>
+									<option value="CEM"> CEM </option>
+									<option value="CEAT"> CEAT </option>
+									<option value="CFNR"> CFNR </option>
+									<option value="CHE"> CHE </option>
+									<option value="CVM"> CVM </option>
+									<option value="GS"> GS </option>
 								</select>
 							</td>
 						</tr>
@@ -346,7 +228,7 @@
 	    </div><!-- /.modal-dialog -->
 	  </div><!-- /.modal -->
 		  
-				<table class="table table-bordered" id="announ">
+				<table class="table table-bordered" id="announ1">
 					<th>Announcements</th>
 					<th>Date</th>
 					<tr>
@@ -374,33 +256,8 @@
 		</div>
 	</div>
 	<!--footer-->
-	<div class="navbar-fixed-bottom" id="test">
-		<div class="text-center"> ICS Library 2014. 
-			<p class="pull-right"><u><a href="http://www.portnine.com" target="_blank">ABOUT US<u></a></p>
-			<p class="pull-right1"><u><a href="http://www.portnine.com" target="_blank">FAQ<u></a></p> 
-		</div>
-	</div>
+<?=$this->load->view("includes/footer")?>	
 
  
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-
-     <!-- /container -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.js"></script>
-	<script>window.jQuery || document.write('<script src="<?php echo base_url("js/vendor/jquery-1.10.1.js") ?>"><\/script>')</script>
-	<script src="<?php echo base_url("js/jquery-2.0.3.min.js"); ?>"></script>
-	<script src="<?php echo base_url('js/vendor/bootstrap.min.js'); ?>"></script>
-
-	<script src="<?php echo base_url('js/createAccount.js') ?>"></script>
-	<script src="<?php echo base_url('js/main.js'); ?>"></script>
-
-	<script>
-		var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-		g.src='//www.google-analytics.com/ga.js';
-		s.parentNode.insertBefore(g,s)}(document,'script'));
-	</script>
-
-	
-    </body>
-</html>
+  

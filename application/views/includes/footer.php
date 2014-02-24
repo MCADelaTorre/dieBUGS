@@ -1,11 +1,13 @@
 	
-	<div class="navbar-fixed-bottom" id="test">
-     <div class="text-center"> ICS Library 2014. 
-     <p class="pull-right"><u><a href="http://www.portnine.com" target="_blank">ABOUT US<u></a></p>
-     <p class="pull-right1"><u><a href="http://www.portnine.com" target="_blank">FAQ<u></a></p> 
-     
-	</div>
-	</div>
+    
+<div class="navbar-fixed-bottom" id="bottom-bar">
+        <div class="text-center"> ICS Library 2014. 
+            <p class="pull-right"><u><a href="http://www.portnine.com" target="_blank">ABOUT US<u></a></p>
+            <p class="pull-right1"><u><a href="http://www.portnine.com" target="_blank">FAQ<u></a></p> 
+        </div>
+    </div>
+    
+    
 </div>
     <!-- Main jumbotron for a primary marketing message or call to action -->
     
@@ -14,7 +16,7 @@
 	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
 	<script src="<?= base_url().'js/delete_script.js'?>"></script>
 	<script src = "<?= base_url() . 'js/validate_script.js' ?>"></script>
-    <script src = "<?= base_url() . 'js/scripts.js' ?>"></script>
+    <script src = "<?= base_url() . 'js/script.js' ?>"></script>
     <script src = "<?= base_url() . 'js/bootstrap.min.js' ?>"></script>
      <script src = "<?= base_url() . 'js/bootstrapjs' ?>"></script>
        <script src="<?=base_url().'js/vendor/jquery-1.10.1.js'?>"></script>
