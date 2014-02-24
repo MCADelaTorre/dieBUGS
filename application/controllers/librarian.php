@@ -361,7 +361,7 @@ class Librarian extends CI_Controller{
 	            'FOR_DELETION' => 'F'    
         	);
 			$data['TOTAL_AVAILABLE'] = $data['TOTAL_STOCK'];
-			$data['TOTAL_IN_STOCK'] = $data['TOTAL_STOCK'];
+			$data['TOTAL_STOCK'] = $data['TOTAL_STOCK'];
 
 			//Setting empty fields that can be NULL to NULL
 			if($data['ISBN'] == '')
