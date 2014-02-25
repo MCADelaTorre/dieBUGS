@@ -64,20 +64,19 @@ $('#markAll').click(function (){
 	}
 });
 
-
-$('#markAlla').click(function (){
-	var buttonText = $('#markAlla').text();
+//Mark All function in the for_deletion_view
+$('#fordeletion').click(function (){
+	var buttonText = $('#fordeletion').text();
 	if(buttonText === 'Mark All'){
-		$('#readytodeletetable').find('input[name="chch[]"]').each(function(){
+		$('#booktable').find('input[name="ch[]"]').each(function(){
 			$(this).prop('checked', true);
 		});
-		$('#markAlla').text('UnMark All');
+		$('#fordeletion').text('UnMark All');
 	}
 	else if(buttonText === 'UnMark All'){
-		$('#readytodeletetable').find('input[name="chch[]"]').each(function(){
+		$('#booktable').find('input[name="ch[]"]').each(function(){
 			$(this).prop('checked', false);
 		});
-		$('#markAlla').text('Mark All');
+		$('#fordeletion').text('Mark All');
 	}
-});
-		
+});		
