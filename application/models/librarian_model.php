@@ -134,7 +134,8 @@ class Librarian_model extends CI_Model{
 				return -1;
 			}
 			else{
-				return $book_id;
+				if($row->for_deletion === 'F')
+					return $book_id;
 			}	
 		endforeach;
 		

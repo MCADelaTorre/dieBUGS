@@ -87,7 +87,7 @@ class Librarian extends CI_Controller{
 		$this->load->library('pagination');
 
 		//Retrieve all references
-		if(isset($_GET['getAll']) OR $_GET['all'] == 'TRUE'){
+		if(isset($_GET['getAll']) OR $this->input->get('all') == 'TRUE'){
 			$_GET['all'] = 'TRUE';
 
 			$offset = ($this->input->get('per_page')) ? $this->input->get('per_page') : 0;
@@ -293,12 +293,13 @@ class Librarian extends CI_Controller{
 				 
 			endif;
 		}
-		
+
 		if(count($cannotBeDeleted) > 0){
 			$data['forDeletion'] = $this->librarian_model->get_selected_books($cannotBeDeleted);
 			$this->load->view('for_deletion_view',$data);
 		}
-		redirect(base_url('index.php/librarian/search_reference_index'),'refresh');
+		else
+			redirect(base_url('index.php/librarian/search_reference_index'),'refresh');
     }//end of function delete_reference
 	
 	/**
@@ -323,7 +324,7 @@ class Librarian extends CI_Controller{
 		endforeach;
 		
 		$data['query'] = $this->librarian_model->get_other_books($idready);	
-		redirect( base_url() . 'index.php/librarian','refresh');
+		redirect( base_url('index.php/librarian/search_reference_index'),'refresh');
 	}//end of function change_forDeletion
 
 	/* **************************************** END OF DELETE REFERENCE MODULE **************************************** */
