@@ -18,7 +18,7 @@ class Librarian_model extends CI_Model{
 	}
 
 	/**
-	 *
+	 * 
 	*/
 	public function get_all_references(){
 		return $this->db->get('reference_materials');
@@ -48,8 +48,6 @@ class Librarian_model extends CI_Model{
 			redirect('librarian/search_reference_index');
 		if(! in_array($query_array['sortCategory'], $sortCategoryArray))
 			redirect('librarian/search_reference_index');
-		//if($query_array['category'] != 'title' OR $query_array['category'] != 'author' OR $query_array['category'] != 'isbn' OR $query_array['category'] != 'code_code' OR $query_array['category'] != 'publisher')
-		//	redirect('librarian/search_reference_index');
 
 		if($query_array['text'] == '')
 			redirect('librarian/search_reference_index');
@@ -80,7 +78,7 @@ class Librarian_model extends CI_Model{
 	 *
 	 * @access 	public
 	 * @param 	array 	$query_array,
-	 * 			int 	$start
+	 * @param 	int 	$start
 	 * @return 	object
 	*/
 	public function get_search_reference($query_array, $start){
@@ -305,17 +303,25 @@ class Librarian_model extends CI_Model{
 			$newValue = $data->total_available;
 			$ceilingValue = $data->total_stock;
 		}
-
+		//Borrow a reference material
 		if($flag === 'C' && $newValue > 0){
-			$this->db->query("UPDATE transactions SET date_borrowed = date('Y-m-d'), borrow_due_date = 
+			$dateBorrowed = date('Y-m-d');
+		 	$dateParts = explode('-', $dateBorrowed);
+		 	$borrowDue = date('Y-m-d', mktime(0,0,0, $dateParts[1], $dateParts[2] + 3, $dateParts[0]));
+
+			$this->db->query("UPDATE transactions 
+				SET date_borrowed = '{$dateBorrowed}', borrow_due_date = '{$borrowDue}'
 				WHERE reference_material_id = '{$referenceId}'
 				AND borrower_id = '{$userId}'");
 		}
 			
-
+		//Return a reference material
 		elseif ($flag === 'R' && $newValue < $ceilingValue){
 			$newValue++;
 			$this->db->query("UPDATE reference_materials SET total_available = '{$newValue}' WHERE id = '{$referenceId}'");
+			$this->db->query("UPDATE transactions SET date_returned = date('Y-m-d')
+				WHERE reference_material_id = '{$referenceId}'
+				AND borrower_id = '{$userId}'");
 		}
 			
 			//
@@ -327,9 +333,9 @@ class Librarian_model extends CI_Model{
 			t.reservation_due_date, t.date_borrowed, t.borrow_due_date, t.date_returned')
 			->from('users u, transactions t')
 			->where('t.borrower_id = u.id');
-			->where()
+			//->where('t.date_returned = NULL);
+
 		return $this->db->get();
-		//return $this->db->get_where('transactions', array('reference_material_id' => $referenceId));
 	}//end of function get_transactions
 
 }//end of Librarian_model
