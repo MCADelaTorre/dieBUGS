@@ -293,31 +293,44 @@ class Librarian_model extends CI_Model{
 	 *
 	 * @access 	public
 	 * @param 	int 	$referenceId
+	 *			int 	$userId
 	 *			char 	$flag
 	*/
-	public function claim_return_reference($referenceId, $flag){
+	public function claim_return_reference($referenceId, $userId, $flag){
 		$updateStatus = FALSE; 
 		
 		//Get stock ad stock within library
-		$stockData = $this->db->query("SELECT total_stock, total_in_stock FROM reference_materials WHERE id = '{$referenceId}'")->result();
+		$stockData = $this->db->query("SELECT total_stock, total_available FROM reference_materials WHERE id = '{$referenceId}'")->result();
 		foreach($stockData as $data){
-			$newValue = $data->total_in_stock;
+			$newValue = $data->total_available;
 			$ceilingValue = $data->total_stock;
 		}
 
-		if($flag === 'C' && $newValue > 0)
-			$updateStatus = TRUE;
+		if($flag === 'C' && $newValue > 0){
+			$this->db->query("UPDATE transactions SET date_borrowed = date('Y-m-d'), borrow_due_date = 
+				WHERE reference_material_id = '{$referenceId}'
+				AND borrower_id = '{$userId}'");
+		}
+			
 
 		elseif ($flag === 'R' && $newValue < $ceilingValue){
 			$newValue++;
-			$updateStatus = TRUE;
+			$this->db->query("UPDATE reference_materials SET total_available = '{$newValue}' WHERE id = '{$referenceId}'");
 		}
-		
-		if($updateStatus === TRUE){
-			$this->db->query("UPDATE reference_materials SET total_in_stock = '{$newValue}' WHERE id = '{$referenceId}'");
-			//$this->db->query("UPDATE transactions SET date_borrowed = date('Y-m-d'), borrow_due_date = ");
-		}
-	}
+			
+			//
+	}//end of function claim_return_reference
+
+	public function get_transactions($referenceId){
+		$this->db->select('u.first_name, u.middle_name, u.last_name, u.user_type,
+			t.reference_material_id, t.waitlist_rank, t.date_waitlisted, t.date_reserved,
+			t.reservation_due_date, t.date_borrowed, t.borrow_due_date, t.date_returned')
+			->from('users u, transactions t')
+			->where('t.borrower_id = u.id');
+			->where()
+		return $this->db->get();
+		//return $this->db->get_where('transactions', array('reference_material_id' => $referenceId));
+	}//end of function get_transactions
 
 }//end of Librarian_model
 

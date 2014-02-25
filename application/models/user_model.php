@@ -66,7 +66,7 @@ class User_model extends CI_Model{
 		$transactionQuery = $this->db->get();
 
 		$this->db->select('access_type, total_available, times_borrowed')
-			->from('reference_material')
+			->from('reference_materials')
 			->where('id',$referenceId);
 		$referenceQuery = $this->db->get();
 
@@ -92,7 +92,7 @@ class User_model extends CI_Model{
 
 				$refArray = array('total_available' => $newTotal, 'times_borrowed' => $newTimesBorrowed);
 				$this->db->where('id', $referenceId);
-				$this->db->update('reference_material', $refArray);
+				$this->db->update('reference_materials', $refArray);
 			
 				$data = array('reference_material_id' => $referenceId, 'borrower_id' => $userId, 'user_type' => $userType, 'waitlist_rank' => NULL, 'date_waitlisted' => NULL, 'date_reserved' => $dateReserved, 'reservation_due_date' => $reserveDue, 'date_borrowed' => NULL, 'borrow_due_date' => NULL, 'date_returned' => NULL);
 				$this->db->insert('transactions', $data);
@@ -109,7 +109,7 @@ class User_model extends CI_Model{
 		date_default_timezone_set("Asia/Manila");	//timezone in the Philippines
 
 		$this->db->select('total_available, access_type')
-			->from('reference_material')
+			->from('reference_materials')
 			->where('id',$referenceId);
 		$bookStatus = $this->db->get();
 		foreach ($bookStatus->result() as $row) {
@@ -212,7 +212,7 @@ class User_model extends CI_Model{
 	 */
 	public function user_book_reserve($reference_material_id){
 		$this->db->select('*')
-			->from('reference_material')
+			->from('reference_materials')
 			->where('id',$reference_material_id);
 		$userBookReserve = $this->db->get();
 		return $userBookReserve->result();
@@ -306,7 +306,7 @@ class User_model extends CI_Model{
 		foreach ($userQuery->result() as $row) { $userBorrowLimit = $row->borrow_limit; }
 		
 		$this->db->select('total_available, times_borrowed')
-			->from('reference_material')
+			->from('reference_materials')
 			->where('id',$referenceId);
 		$referenceQuery = $this->db->get();
 		foreach ($referenceQuery->result() as $row) { 
@@ -324,7 +324,7 @@ class User_model extends CI_Model{
 
 		$cancelArray2 = array('total_available' => $newTotal, 'times_borrowed' => $newTimesBorrowed);
 				$this->db->where('id', $referenceId);
-				$this->db->update('reference_material', $cancelArray2);
+				$this->db->update('reference_materials', $cancelArray2);
 		
 		$this->db->where('borrower_id', $userId);
 		$this->db->where('reference_material_id', $referenceId);
@@ -411,7 +411,7 @@ class User_model extends CI_Model{
 	*	@return rows from db || null
 	*/
 	public function view_reference_material($bookid){
-		return $this->db->query("Select * from reference_material where id = $bookid ");
+		return $this->db->query("Select * from reference_materials where id = $bookid ");
 	}
 
 
@@ -424,7 +424,7 @@ class User_model extends CI_Model{
 	
 	public function search_reference_material($keyword,$limit,$offset){
 		if($offset == null) $offset = 0;
-		return  $this->db->query("Select * from reference_material where title like '%$keyword%' order by title asc limit $offset,$limit");
+		return  $this->db->query("Select * from reference_materials where title like '%$keyword%' order by title asc limit $offset,$limit");
 	}
 
 	/**
@@ -434,7 +434,7 @@ class User_model extends CI_Model{
 	 */
 	public function search_reference_materials($input){
 		$this->db->select('*')
-			->from('reference_material')
+			->from('reference_materials')
 			->like('title',$input)
 			->or_like('author',$input)
 			->or_like('isbn',$input)
@@ -454,7 +454,7 @@ class User_model extends CI_Model{
 	*	@return rows from db || null
 	*/
 	public function search_reference_material2($keyword){
-		return  $this->db->query("Select * from reference_material where title like '%$keyword%' order by title asc");
+		return  $this->db->query("Select * from reference_materials where title like '%$keyword%' order by title asc");
 	}
 
 
@@ -470,7 +470,7 @@ class User_model extends CI_Model{
 
 		$keyword_tokens = preg_split("/[\s,]+/", $keywords);
 
-		$sql = "SELECT * FROM reference_material WHERE title LIKE'%";
+		$sql = "SELECT * FROM reference_materials WHERE title LIKE'%";
 		$sql .= implode("%' OR title LIKE '%", $keyword_tokens) . "'";
 		$sql .= "order by title asc limit $offset,$limit";
 		return  $this->db->query($sql);
@@ -485,7 +485,7 @@ class User_model extends CI_Model{
 	public function search_reference_material_token2($keywords){
 		$keyword_tokens = preg_split("/[\s,!@#$\[\]\*\(\)\^<>\?\+\_\={}]+/", $keywords);
 
-		$sql = "SELECT * FROM reference_material WHERE title LIKE'%";
+		$sql = "SELECT * FROM reference_materials WHERE title LIKE'%";
 		$sql .= implode("%' OR title LIKE '%", $keyword_tokens) . "'";
 		$sql .= "order by title asc";
 		return  $this->db->query($sql);
