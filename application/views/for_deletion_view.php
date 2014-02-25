@@ -43,7 +43,7 @@
 <p id="par">
 
 </p>
-<button type="button" id="markAll" value="markAll" >Mark All</button>
+<button type="button" id="fordeletion" value="markAll" >Mark All</button>
 <input type = "Submit" name = "delete" id="delete" value = "Done!" onclick= "return confirmChangeForDeletion()"/>
 </form>
 <?=$this->load->view("includes/footer")?>
