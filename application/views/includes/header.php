@@ -75,7 +75,7 @@
                   <li><a href="<?= base_url('index.php/librarian/view_profile') ?>" >View Profile</a></li>
                    <li><a href="<?=base_url('index.php/librarian/search_reference_index') ?>">Search References</a></li>
                    <li class="dropdown-submenu">
-                    <a tabindex="-1" href="<?= site_url('librarian/add_reference') ?>">Add Reference</a>
+                    <a tabindex="-1" href="#">Add Reference</a>
                         <ul class="dropdown-menu">
                              <li> <a href="<?= site_url('librarian/add_reference') ?>">View Add Reference Form</a></li>
                              <li><a href="<?= site_url('librarian/file_upload') ?>">File Upload</a></li>
